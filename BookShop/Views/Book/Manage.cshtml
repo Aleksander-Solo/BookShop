@@ -1,0 +1,33 @@
+﻿@using System.Security.Claims
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>W tym panelu możesz zarządzać sklepem.</h2>
+        <hr />
+        <h4>Akcje:</h4>
+        <a asp-controller="Book" asp-action="Add" class="button">Dodaj nową książke <i class="icon-plus-squared"></i></a>
+        <a asp-controller="CoverType" asp-action="AddType" class="button">Dodaj nowy gatunek</a>
+        <a asp-controller="CoverType" asp-action="AddCover" class="button">Dodaj nowy typ okładki</a>
+        <a asp-controller="CoverType" asp-action="AddPubHause" class="button">Dodaj nowe wydawnictwo</a>
+        <a asp-controller="Account" asp-action="GetPDF" class="button">Pobierz historie zakupów (PDF) <i class="icon-file-pdf"></i></a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        @{
+            var role = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role);
+
+            if (role.Value == "SuperAdmin")
+            {
+                <text>
+                    <form asp-action="ListOfUsers" asp-controller="Account">
+                        <div class="form-group">
+                            <button type="submit" class="button" style="display: block;">Szukaj Użytkowników <i class="icon-search"></i></button>
+                            <input type="text" name="phrase" style="margin-top: 5px;" />
+                        </div>
+                    </form>
+                </text>
+            }
+        }
+    </div>
+</div>

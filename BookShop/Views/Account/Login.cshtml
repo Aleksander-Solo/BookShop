@@ -1,0 +1,17 @@
+﻿@model LoginViewModel
+
+<form method="post" class="box">
+    <h1><i class="icon-user"></i></h1>
+    <h1>Logowanie</h1>
+    <h5>
+        @if (ViewBag.ErrorMassage != null)
+        {
+            @ViewBag.ErrorMassage
+        }
+    </h5>
+    <input type="email" asp-for="Email" placeholder="@Html.DisplayNameFor(x => x.Email)" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <input type="password" asp-for="Password" placeholder="@Html.DisplayNameFor(x => x.Password)" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <input type="submit" class="btn btn-primary" value="Zaloguj" />
+</form>

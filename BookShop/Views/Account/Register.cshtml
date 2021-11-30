@@ -1,0 +1,18 @@
+﻿@model BookShop.Models.RegisterUserViewModel
+
+<form asp-action="Register" enctype="multipart/form-data" class="box" style=" margin-top: 20px;">
+    <h1>Rejestracja</h1>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="Name" class="form-control" placeholder="@Html.DisplayNameFor(x => x.Name) (optional)" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <input asp-for="Email" class="form-control" placeholder="@Html.DisplayNameFor(x => x.Email)" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <input asp-for="Password" type="password" class="form-control" placeholder="@Html.DisplayNameFor(x => x.Password)" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="@Html.DisplayNameFor(x => x.ConfirmPassword)" />
+    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    <label asp-for="Picture" class="fileLabel">Picture <i class="icon-picture"></i> (optional)</label>
+    <input asp-for="Picture" type="file" name="file" accept="image/*"/>
+    <input type="submit" value="Zarejestruj" />
+</form>
+

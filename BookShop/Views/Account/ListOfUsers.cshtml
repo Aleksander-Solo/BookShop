@@ -1,0 +1,47 @@
+﻿@model List<UserViewModel>
+
+<h2>Użytkownicy</h2>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <td>Nick</td>
+            <td>Email</td>
+            <td>Zdjęcie</td>
+            <td>Rola</td>
+            <td>Akcje</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (UserViewModel user in Model)
+        {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td style="text-align: center;">
+                    @if (user.Picture.Any())
+                    {
+                        var base64 = Convert.ToBase64String(user.Picture);
+                        var img = string.Format("data:image/jpg;base64,{0}", base64);
+                        <img src="@img" style="height: 60px; width: 60px;" />
+                    }else{<text>Brak</text>}
+                </td>
+                <td>@user.Role</td>
+                <td>
+                    @if (user.Role == "Admin")
+                    {
+                        <text>
+                            <a class="button" asp-action="TakeRole" asp-route-id="@user.Id">Zabierz uprawniwnia</a>
+                        </text>
+                    }
+                    else
+                    {
+                        <text>
+                            <a class="button" asp-action="GiveRole" asp-route-id="@user.Id">Nadaj uprawniwnia</a>
+                        </text>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

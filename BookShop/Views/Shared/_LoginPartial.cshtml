@@ -1,0 +1,64 @@
+﻿@using BookShop.Services
+@using System.Security.Claims
+@using Newtonsoft.Json;
+@using Microsoft.AspNetCore.Http;
+@inject IAccountService _service
+@inject IHttpContextAccessor HttpContextAccesor
+
+@if (User.Identity.Name != null)
+{
+    var email = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email);
+    UserViewModel user = _service.GetUser(email.Value);
+
+    var role = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role);
+
+    int count = 0;
+    if (HttpContextAccesor.HttpContext.Session.GetString("shopCard") is not null)
+    {
+        count = JsonConvert.DeserializeObject<List<BookViewModel>>(HttpContextAccesor.HttpContext.Session.GetString("shopCard")).Count();
+    }
+
+
+    <text>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-controller="Account" asp-action="Info">
+                    @if (user.Picture.Any())
+                    {
+                        var base64 = Convert.ToBase64String(user.Picture);
+                        var img = string.Format("data:image/jpg;base64,{0}", base64);
+                        <img src="@img" style="width: 30px; height: 25px; border-radius: 8px;"/>
+                    }else{
+                        <i class="icon-user-circle-o"></i>
+                    }
+                    @User.Identity.Name
+                </a>
+            </li>
+            <li class="nav-item">
+                <a style="margin-right: 5px;" class="nav-link text-light" asp-controller="Book" asp-action="ShopCard">Koszyk: @count</a>
+            </li>
+            <li class="nav-item">
+                <a style="margin-right: 5px; margin-bottom: 1px;" class="btn btn-danger text-dark" asp-controller="Account" asp-action="Logout">Logout <i class="icon-logout"></i></a>
+            </li>
+            @if (role.Value == "SuperAdmin" || role.Value == "Admin")
+            {
+                <li class="nav-item">
+                    <a class="btn btn-secondary text-light" asp-controller="Book" asp-action="Manage">Manage <i class="icon-cog"></i></a>
+                </li>
+            }
+
+        </ul>
+    </text>
+}
+else
+{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a style="margin-right: 5px;" class="btn btn-outline-primary text-light" asp-controller="Account" asp-action="Register">Register <i class="icon-user-add"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-light text-dark" asp-controller="Account" asp-action="Login">Login <i class="icon-login"></i></a>
+        </li>
+    </ul>
+}
+

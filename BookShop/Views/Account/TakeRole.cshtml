@@ -1,0 +1,36 @@
+﻿@model UserViewModel
+
+<div class="row">
+    <div class="col-12">
+        <h3>Napewno chcesz zabrać temu użytkownikowi role "Admin"?</h3>
+        <hr />
+        <p>
+            <label asp-for="Name"></label>:
+            @Model.Name
+        </p>
+        <p>
+            <label asp-for="Email"></label>:
+            @Model.Email
+        </p>
+        <p>
+            <label asp-for="Role"></label>:
+            @Model.Role
+        </p>
+        <p>
+            @if (Model.Picture.Any())
+            {
+                var base64 = Convert.ToBase64String(Model.Picture);
+                var img = string.Format("data:image/jpg;base64,{0}", base64);
+                <img src="@img" style="height: 60px; width: 60px;" />
+            }
+        </p>
+        <div class="btn-group">
+            <a asp-action="TakeRolePost" asp-route-id="@Model.Id">
+                <button class="btn btn-success" type="submit">Tak <i class="icon-ok"></i></button>
+            </a>
+            <a asp-action="ListOfUsers">
+                <button class="btn btn-outline-secondary">Nie <i class="icon-cancel"></i></button>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@model BookViewModel
+
+<h3>Edytuj książke <i class="icon-edit"></i></h3>
+<hr />
+<div class="row">
+    <div class="col-sm-8">
+        <form asp-action="Update" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input asp-for="ReleaseDate" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumperOfPages" class="control-label"></label>
+                <input asp-for="NumperOfPages" class="form-control" />
+                <span asp-validation-for="NumperOfPages" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="OnTop" /> @Html.DisplayNameFor(model => model.OnTop)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Picture" class="control-label"></label><i class="icon-picture"></i>
+                <input asp-for="Picture" type="file" class="form-control" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoverId" class="control-label"></label>
+                <select asp-for="CoverId" class="form-control" asp-items="@(new SelectList(@ViewBag.Covers,"Id","Name"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfBookId" class="control-label"></label>
+                <select asp-for="TypeOfBookId" class="form-control" asp-items="@(new SelectList(@ViewBag.TypesOfBook,"Id","Name"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishingHauseId" class="control-label"></label>
+                <select asp-for="PublishingHauseId" class="form-control" asp-items="@(new SelectList(@ViewBag.PubHauses,"Id","Name"))"></select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Edytuj <i class="icon-floppy"></i></button>
+                <button type="reset" class="btn btn-outline-warning">Reset <i class="icon-cancel"></i></button>
+                <a asp-action="Details" asp-route-id="@Model.Id"><button type="button" class="btn btn-outline-info">Wróć <i class="icon-reply"></i></button></a>
+            </div>
+        </form>
+    </div>
+</div>

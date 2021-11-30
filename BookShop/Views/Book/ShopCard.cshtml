@@ -1,0 +1,42 @@
+﻿@model List<BookCardViewModel>
+<h3>Koszyk <i class="icon-basket"></i></h3>
+<hr />
+<div class="row">
+    @if (Model.Any())
+    {
+        <div class="col-sm-4">
+            <h5>Do zapłaty: <span style="color: red;">@ViewBag.Price</span> zł.</h5>
+            <h5>W koszyku: @ViewBag.Count książka(-ek)</h5>
+            <a asp-action="Index"><button class="btn btn-outline-info">Kontynuuj zakupy</button></a>
+            <a asp-action="Buy"><button class="btn btn-success">Kupuje</button></a>
+        </div>
+        <div class="col-sm-8">
+            @foreach (BookCardViewModel book in Model)
+            {
+                <div class="book">
+                    <div class="title"><center>@book.Title</center></div>
+
+                    @if (book.Picture.Any())
+                    {
+                        var base64 = Convert.ToBase64String(book.Picture);
+                        var img = string.Format("data:image/jpg;base64,{0}", base64);
+                        <img src="@img" class="cover" />
+                    }
+
+                    <div style="font-size: 14px;">@book.Author</div>
+                    <div class="contain">
+                        <a asp-action="Details" asp-route-id="@book.Id"><div class="button-info"><i class="icon-info-circled"></i></div></a>
+                        <a asp-action="TakeOutShopCard" asp-route-id="@book.Id"><div class="button-out"><i class="icon-cancel"></i></div></a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div style="margin: auto;">
+            <h1>Koszyk jest pusty! </h1>
+            <a asp-action="Index"><center><button class="btn btn-outline-info">Przeglądaj książki</button></center></a>
+        </div>
+    }
+</div>

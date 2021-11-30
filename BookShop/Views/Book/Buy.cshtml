@@ -1,0 +1,39 @@
+﻿@model PurchaseHistoryViewModel
+@{
+    ViewData["Title"] = "Buy";
+}
+
+<h1>Zakup</h1>
+<hr />
+<div class="row">
+    <div class="col-sm-3">
+        Do zapłaty: <span style="color: red;">@ViewBag.Price</span> za @ViewBag.Count książki.
+    </div>
+    <div class="col-sm-9">
+        <form asp-action="Buy">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label" ></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label" ></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adress" class="control-label" ></label>
+                <input asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Kupuje <i class="icon-ok"></i></button>
+                <button type="reset" class="btn btn-outline-warning">Reset <i class="icon-cancel"></i></button>
+                <a asp-action="Index"><button type="button" class="btn btn-outline-info">Wróć <i class="icon-reply"></i></button></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

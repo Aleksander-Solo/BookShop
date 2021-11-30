@@ -1,0 +1,15 @@
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\bin\Debug\net5.0\BookShop.DataAccesLayer.deps.json
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\bin\Debug\net5.0\BookShop.DataAccesLayer.runtimeconfig.json
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\bin\Debug\net5.0\BookShop.DataAccesLayer.runtimeconfig.dev.json
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\bin\Debug\net5.0\BookShop.DataAccesLayer.dll
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\bin\Debug\net5.0\ref\BookShop.DataAccesLayer.dll
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\bin\Debug\net5.0\BookShop.DataAccesLayer.pdb
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\BookShop.DataAccesLayer.csproj.AssemblyReference.cache
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\BookShop.DataAccesLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\BookShop.DataAccesLayer.AssemblyInfoInputs.cache
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\BookShop.DataAccesLayer.AssemblyInfo.cs
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\BookShop.DataAccesLayer.csproj.CoreCompileInputs.cache
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\BookShop.DataAccesLayer.dll
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\ref\BookShop.DataAccesLayer.dll
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\BookShop.DataAccesLayer.pdb
+C:\Projekty_C#\Aplikacje_Webowe\MVC\BookShop\BookShop.DataAccesLayer\obj\Debug\net5.0\BookShop.DataAccesLayer.genruntimeconfig.cache

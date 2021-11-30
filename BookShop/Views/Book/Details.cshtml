@@ -1,0 +1,76 @@
+﻿@model BookViewModel
+@using System.Security.Claims
+
+<div class="row">
+    <div class="col-sm-9">
+        <div class="details">
+            <h3>@Model.Title</h3>
+            <hr />
+            <p><b>@Html.DisplayNameFor(x => x.Author):</b> @Model.Author</p>
+            <p><b>@Html.DisplayNameFor(x => x.TypeOfBook):</b> @Model.TypeOfBook</p>
+            <p><b>@Html.DisplayNameFor(x => x.Cover):</b> @Model.Cover</p>
+            <p><b>@Html.DisplayNameFor(x => x.PublishingHause):</b> @Model.PublishingHause</p>
+            <p><b>@Html.DisplayNameFor(x => x.ReleaseDate):</b> @Model.ReleaseDate</p>
+            <p><b>@Html.DisplayNameFor(x => x.NumperOfPages):</b> @Model.NumperOfPages</p>
+            <p style="text-align: justify;"><b>@Html.DisplayNameFor(x => x.Description):</b> @Model.Description</p>
+        </div>
+    </div>
+    <div class="col-sm-3" style="margin-bottom: 12px;">
+        <div class="action">
+            @if (Model.Picture.Any())
+            {
+                var base64 = Convert.ToBase64String(Model.Picture);
+                var img = string.Format("data:image/jpg;base64,{0}", base64);
+                <img src="@img" class="cover-l" />
+            }else{
+                <i class="icon-book" style="font-size: 90px; text-align: center;"></i>
+            }
+            <p><b>@Html.DisplayNameFor(x => x.Price):</b><span style="color: red; font-size: 18px;"> @Model.Price</span> zł.</p>
+            <a asp-action="AddToShopCard" asp-route-id="@Model.Id"><button class="btn btn-success" style="width: 100%;">Do koszyka <i class="icon-basket"></i></button></a>
+        </div>
+    </div>
+</div>
+
+@if (User.Identity.Name is not null)
+{
+    var role = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role);
+
+    if (role.Value == "SuperAdmin" || role.Value == "Admin")
+    {
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-sm-12">
+                <div class="panel">
+                    <h4 style="font-weight: 600;">Edytuj książke:</h4>
+                    <hr />
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#myDeleteModal">Usuń <i class="icon-trash"></i></button>
+                    <a asp-action="Update" asp-route-id="@Model.Id"><button class="btn btn-warning">Edytuj <i class="icon-edit"></i></button></a>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@await Html.PartialAsync("_Comment", new CommentViewModel() { BookId = Model.Id })
+@await Html.PartialAsync("_ListOfComments", Model.Comments)
+
+<div class="modal" tabindex="-1" role="dialog" id="myDeleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form asp-action="AddComment">
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: red;">Usunąć książke? <i class="icon-trash"></i></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Napewno chcesz usunąć tą książke?
+                </div>
+                <div class="modal-footer">
+                    <a asp-action="Delete" asp-route-id="@Model.Id"><button type="submit" class="btn bg-danger">Usuń <i class="icon-trash"></i></button></a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Wróć <i class="icon-reply"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

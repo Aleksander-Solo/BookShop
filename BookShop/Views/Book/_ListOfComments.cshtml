@@ -1,0 +1,37 @@
+﻿@model ICollection<CommentViewModel>
+
+@foreach (CommentViewModel comment in Model)
+{
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="comment">
+                <div class="comment-title">
+                    @comment.Title
+                    <div class="comment-author">
+                        @if (String.IsNullOrEmpty(comment.Author.Name))
+                        {
+                            @comment.Author.Email
+                        }
+                        else
+                        {
+                            @comment.Author.Name
+                        }
+                        @if (comment.Author.Picture.Any())
+                        {
+                            string base64 = Convert.ToBase64String(comment.Author.Picture);
+                            string img = string.Format("data:image/jpg;base64,{0}", base64);
+                            <img src="@img" style="width: 25px; height: 23px; border-radius: 10px;" />
+                        }
+                        else
+                        {
+                            <i class="icon-user-circle-o"></i>
+                        }
+                    </div>
+                </div>
+                <div style="text-align: justify; margin: 2px;">@comment.Content</div>
+                <div class="comment-footer">@comment.Stars <i class="icon-star-filled"></i></div>
+            </div>
+        </div>
+    </div>
+}
+

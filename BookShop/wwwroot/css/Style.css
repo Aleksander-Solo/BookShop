@@ -1,0 +1,274 @@
+﻿.book {
+    width: 260px;
+    height: 290px;
+    border-bottom: solid gray 2px;
+    border-left: solid gray 2px;
+    border-right: solid gray 2px;
+    float: left;
+    margin: 5px;
+    text-align: center;
+}
+
+.book-s {
+    width: 260px;
+    height: 245px;
+    border-bottom: solid gray 2px;
+    border-left: solid gray 2px;
+    border-right: solid gray 2px;
+    float: left;
+    margin: 5px;
+    text-align: center;
+}
+
+.title {
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    background-color: #191919;
+    margin-bottom: 3px;
+}
+
+.cover {
+    width: 135px;
+    height: 140px;
+}
+
+.cover-l {
+    min-width: 100%;
+    margin: auto;
+    text-align: center;
+    height: 240px;
+    margin-bottom: 4px;
+}
+
+.button-info {
+    height: 40px;
+    width: 39px;
+    font-size: 15px;
+    background-color: #235dc2;
+    color: whitesmoke;
+    margin: auto;
+    padding: 7px;
+    float: left;
+    text-align: center;
+    margin-right: 5px;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+    .button-info:hover {
+        width: 43px;
+        height: 44px;
+        font-size: 16px;
+        color: #235dc2;
+        background-color: #1c142b;
+        border: solid #235dc2 2px;
+        cursor: pointer;
+    }
+
+.button-buy {
+    height: 40px;
+    width: 39px;
+    font-size: 15px;
+    background-color: green;
+    color: black;
+    margin: auto;
+    padding: 7px;
+    float: left;
+    text-align: center;
+    margin-right: 5px;
+    border-radius: 10px;
+    color: whitesmoke;
+    transition: 0.25s;
+}
+
+    .button-buy:hover {
+        width: 43px;
+        height: 44px;
+        font-size: 16px;
+        color: green;
+        background-color: #1c142b;
+        border: solid green 2px;
+        cursor: pointer;
+    }
+
+.button-out {
+    height: 40px;
+    width: 39px;
+    font-size: 15px;
+    background-color: darkred;
+    color: black;
+    margin: auto;
+    padding: 7px;
+    float: left;
+    text-align: center;
+    margin-right: 5px;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+    .button-out:hover {
+        width: 43px;
+        height: 44px;
+        font-size: 16px;
+        color: darkred;
+        background-color: #1c142b;
+        border: solid darkred 2px;
+        cursor: pointer;
+    }
+
+.panel {
+    padding: 2px;
+}
+
+.button {
+    border: solid black 3px;
+    padding: 5px;
+    color: black;
+    float: left;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+    .button:hover {
+        border: solid blue 3px;
+        background-color: gray;
+        color: blue;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+.box {
+    width: 400px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #191919;
+    text-align: center;
+    display: block;
+}
+
+    .box h5 {
+        color: red;
+        text-transform: uppercase;
+    }
+
+    .box h1 {
+        color: white;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .box input[type = "email"], .box input[type = "password"], .box input[type="text"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #213d8a;
+        padding: 14px 10px;
+        width: 200px;
+        outline: none;
+        color: white;
+        border-radius: 24px;
+        transition: 0.25s;
+    }
+
+        .box input[type = "email"]:focus, .box input[type = "password"]:focus {
+            width: 280px;
+            border-color: #16a122;
+        }
+
+    .box input[type = "submit"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #16a122;
+        padding: 14px 10px;
+        width: 200px;
+        outline: none;
+        color: white;
+        border-radius: 24px;
+        transition: 0.25s;
+    }
+
+        .box input[type = "submit"]:hover {
+            background-color: #16a122;
+        }
+
+    .box input[type="file"] {
+        display: none;
+    }
+
+.fileLabel {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #213d8a;
+    align-items: center;
+    padding-top: 6px;
+    width: 200px;
+    height: 45px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+    .fileLabel:hover {
+        background-color: #213d8a;
+        color: white;
+        cursor: pointer;
+    }
+
+.comment {
+    border: #191919 solid 3px;
+    margin: 4px;
+    width: 100%;
+}
+
+.comment-author {
+    float: right;
+    text-align: right;
+    font-size: 15px;
+    color: white;
+}
+
+.comment-title {
+    float: left;
+    font-size: 18px;
+    color: white;
+    background-color: #191919;
+    width: 100%;
+}
+
+.comment-footer {
+    bottom: 0;
+    background-color: #191919;
+    text-align: left;
+    color: yellow;
+}
+
+.txt {
+    text-align: justify;
+    color: #191919;
+    font-size: 16px;
+    border-top: solid #191919 2px;
+    border-bottom: solid #191919 2px;
+    margin-bottom: 7px;
+    padding: 4px;
+}
+
+.contain {
+    display: block;
+    margin: auto;
+    width: 92px;
+    margin-top: 5px;
+    text-align: center;
+}
