@@ -25,12 +25,9 @@ namespace BookShop.Controllers
         private readonly ICommentService _commentService;
         private readonly ISessionHelper _sessionHelper;
 
-        public BookController(IBookService service,
-                              ICoverAndTypeService coverAndTypeService,
-                              IPublishingHauseService publishingService,
-                              IAccountService accountService,
-                              IPurchaseHistoryService purchaseService,
-                              ICommentService commentService,
+        public BookController(IBookService service, ICoverAndTypeService coverAndTypeService,
+                              IPublishingHauseService publishingService, IAccountService accountService,
+                              IPurchaseHistoryService purchaseService, ICommentService commentService,
                               ISessionHelper sessionHelper)
         {
             _publishingService = publishingService;
@@ -51,6 +48,16 @@ namespace BookShop.Controllers
                 PageNumber = pageNumber,
                 PageSize = 4
             };
+
+            ViewBag.ShowRecomended = false;
+
+            if (!String.IsNullOrEmpty(Request.Cookies["key"]))
+            {
+                List<BookViewModel> books = _service.GetRecommendedBooks(Request.Cookies["key"]);
+                ViewBag.ShowRecomended = true;
+                ViewBag.Type = books.First().TypeOfBook;
+                ViewBag.Recommended = books;
+            }
 
             return View(result);
         }
@@ -134,7 +141,11 @@ namespace BookShop.Controllers
 
         public IActionResult Details(int id)
         {
-            return View(_service.GetBook(id));
+            BookViewModel book = _service.GetBook(id);
+            CookieOptions cookieOptions = new CookieOptions();
+            cookieOptions.Expires = DateTime.Now.AddDays(14);
+            Response.Cookies.Append("key", book.TypeOfBook, cookieOptions);
+            return View(book);
         }
 
         [Authorize(Roles = "SuperAdmin, Admin")]
@@ -161,8 +172,7 @@ namespace BookShop.Controllers
             {
                 SetDropDawns();
                 return View();
-            }
-                
+            }          
         }
 
         [Authorize]

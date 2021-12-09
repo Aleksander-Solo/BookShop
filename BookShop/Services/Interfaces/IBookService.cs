@@ -9,6 +9,7 @@ namespace BookShop.Services
     public interface IBookService
     {
         public List<BookViewModel> GetBooks(int pageNumber);
+        public List<BookViewModel> GetRecommendedBooks(string typeOfBook);
         public List<BookViewModel> GetBooks(string phrase);
         public List<BookViewModel> GetTopBooks(int pageNumber);
         public BookViewModel GetBook(int id);

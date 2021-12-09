@@ -6,44 +6,52 @@
         <div class="txt">
             Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym. Spopularyzował się w latach 60. XX w. wraz z publikacją arkuszy Letrasetu, zawierających fragmenty Lorem Ipsum, a ostatnio z zawierającym różne wersje Lorem Ipsum oprogramowaniem przeznaczonym do realizacji druków na komputerach osobistych, jak Aldus PageMaker
         </div>
-        <h3>BestSellery: <i class="icon-book"></i></h3>
-        <hr />
+        <div style="display: block;">
+            <h3>BestSellery: <i class="icon-book"></i></h3>
+            <hr />
 
-        <cs-pager style="display: block; float: none;"
-                  cs-paging-pagenumber=(int)Model.PageNumber
-                  cs-paging-totalitems=(int)Model.TotalItems
-                  cs-paging-pagesize=Model.PageSize
-                  cs-pagenumber-param="pageNumber"
-                  asp-controller="Book"
-                  asp-action="Home"
-                  cs-pager-li-current-class="page-item active"
-                  cs-pager-li-other-class="page-item"
-                  cs-pager-li-non-active-class="page-item disabled"
-                  cs-pager-link-current-class="page-link"
-                  cs-pager-link-other-class="page-link">
+            <cs-pager style="display: block; float: none;"
+                      cs-paging-pagenumber=(int)Model.PageNumber
+                      cs-paging-totalitems=(int)Model.TotalItems
+                      cs-paging-pagesize=Model.PageSize
+                      cs-pagenumber-param="pageNumber"
+                      asp-controller="Book"
+                      asp-action="Home"
+                      cs-pager-li-current-class="page-item active"
+                      cs-pager-li-other-class="page-item"
+                      cs-pager-li-non-active-class="page-item disabled"
+                      cs-pager-link-current-class="page-link"
+                      cs-pager-link-other-class="page-link">
 
-        </cs-pager>
+            </cs-pager>
 
-        @foreach (BookViewModel book in Model.Data)
-        {<a asp-action="Details" asp-route-id="@book.Id">
-                <div class="book-s">
-                    <div class="title"><center>@book.Title</center></div>
+            @foreach (BookViewModel book in Model.Data)
+            {
+                <a asp-action="Details" asp-route-id="@book.Id">
+                    <div class="book-s">
+                        <div class="title"><center>@book.Title</center></div>
 
-                    @if (book.Picture.Any())
-                    {
-                        var base64 = Convert.ToBase64String(book.Picture);
-                        var img = string.Format("data:image/jpg;base64,{0}", base64);
-                        <img src="@img" class="cover" />
-                    }
-                    else
-                    {
-                        <i class="icon-book" style="font-size: 80px; text-align: center;"></i>
-                    }
+                        @if (book.Picture.Any())
+                        {
+                            var base64 = Convert.ToBase64String(book.Picture);
+                            var img = string.Format("data:image/jpg;base64,{0}", base64);
+                            <img src="@img" class="cover" />
+                        }
+                        else
+                        {
+                            <i class="icon-book" style="font-size: 80px; text-align: center;"></i>
+                        }
 
-                    <div style="font-size: 16px; color:black;">@book.Author</div>
-                    <div style="font-size: 14px;">@book.TypeOfBook</div>
-                </div>
-            </a>
+                        <div style="font-size: 16px; color:black;">@book.Author</div>
+                        <div style="font-size: 14px;">@book.TypeOfBook</div>
+                    </div>
+                </a>
+            }
+        </div>
+        
+        @if (ViewBag.ShowRecomended)
+        {
+            await Html.RenderPartialAsync("_Recommended", (List<BookViewModel>)ViewBag.Recommended);
         }
     </div>
 </div>

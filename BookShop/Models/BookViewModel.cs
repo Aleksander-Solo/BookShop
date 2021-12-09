@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,8 +10,10 @@ namespace BookShop.Models
     public class BookViewModel
     {
         public int Id { get; set; }
+        [MaxLength(45)]
         [DisplayName("Tytuł")]
         public string Title { get; set; }
+        [MaxLength(50)]
         [DisplayName("Autor")]
         public string Author { get; set; }
         [DisplayName("Opis")]

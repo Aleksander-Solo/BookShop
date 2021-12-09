@@ -39,6 +39,8 @@ namespace BookShop.DataAccesLayer.Repository
                                       .Include(x => x.PublishingHause)
                                       .Include(x => x.Cover)
                                       .Include(x => x.Comments).ThenInclude(x => x.Author).SingleOrDefault(x => x.Id == id);
+            if(book is null)
+                book = new Book() { Title = "Nie ma takiej książki!"};
 
             return book;
         }
@@ -65,12 +67,15 @@ namespace BookShop.DataAccesLayer.Repository
             return _context.Books.Where(x => x.OnTop == true).Count();
         }
 
-        public List<Book> GetTopBooks(int pageNamber)
+        public List<Book> GetRecommendedBooks(string typeOfBook)
         {
-            int pageSize = 4;
-            int excludeRecords = (pageSize * pageNamber) - pageSize;
-            return _context.Books.Where(x => x.OnTop == true).Skip(excludeRecords).Take(pageSize)
-                                 .Include(x => x.TypeOfBook).AsNoTracking().ToList();
+            int typeOfBookId = _context.TypesOfBook.First(x => x.Name == typeOfBook).Id;
+            return _context.Books.Where(x => x.TypeOfBookId == typeOfBookId).Take(4).OrderBy(x => x.ReleaseDate).ToList();
+        }
+
+        public IEnumerable<Book> GetTopBooks()
+        {
+            return _context.Books.Where(x => x.OnTop == true).Include(x => x.TypeOfBook).OrderBy(x => x.DateAdded).AsNoTracking();
         }
 
         public void Update(int id, Book book)

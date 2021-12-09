@@ -50,7 +50,7 @@
     }
 }
 
-@await Html.PartialAsync("_Comment", new CommentViewModel() { BookId = Model.Id })
+@await Html.PartialAsync("_Comment", new CommentViewModel() { BookId = Model.Id, Stars = 5})
 @await Html.PartialAsync("_ListOfComments", Model.Comments)
 
 <div class="modal" tabindex="-1" role="dialog" id="myDeleteModal">

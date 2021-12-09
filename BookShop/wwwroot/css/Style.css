@@ -139,6 +139,16 @@
         text-decoration: none;
     }
 
+.cardM {
+    border: black solid 3px;
+    height: 280px;
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18px;
+    color: black;
+}
+
 .box {
     width: 400px;
     padding: 40px;

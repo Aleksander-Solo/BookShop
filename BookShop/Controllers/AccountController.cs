@@ -46,7 +46,7 @@ namespace BookShop.Controllers
                 SenderEmailPassword = "nethdnetzacnntub"
             });
 
-            await email.Send("bookshopappsolo@gmail.com", "Test", "To jest testowa wiadomość");
+            await email.Send("oleksolol@wp.pl", "Test", "To jest testowa wiadomość");
 
             return RedirectToAction(nameof(Info));
         }

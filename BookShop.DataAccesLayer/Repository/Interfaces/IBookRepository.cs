@@ -10,8 +10,9 @@ namespace BookShop.DataAccesLayer.Repository.Interfaces
     public interface IBookRepository
     {
         public List<Book> GetBooks(int pageNamber);
+        public List<Book> GetRecommendedBooks(string typeOfBook);
         public List<Book> GetBooks(string phrase);
-        public List<Book> GetTopBooks(int pageNamber);
+        public IEnumerable<Book> GetTopBooks();
         public Book GetBook(int id);
         public void Delete(int id);
         public void Update(int id, Book book);

@@ -56,6 +56,7 @@ namespace BookShop.Services
 
         public BookCardViewModel Map_Card(Book book) => mMapper.Map<BookCardViewModel>(book);
         public ICollection<Book> Map(ICollection<BookCardViewModel> books) => mMapper.Map<ICollection<Book>>(books);
+        public IEnumerable<BookViewModel> Map(IEnumerable<Book> books) => mMapper.Map<IEnumerable<BookViewModel>>(books);
         #endregion
 
         #region Cover
